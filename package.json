@@ -1,6 +1,6 @@
 {
-  "name": "static-site-seed",
-  "description": "Static website seed",
+  "name": "james.adarich.com",
+  "description": "My personal website",
   "version": "1.0.0",
   "author": "James Adarich",
   "dependencies": {

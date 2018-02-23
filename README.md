@@ -1,5 +1,5 @@
-# Static Site Seed
-A start point for creating static sites
+# james.adarich.com
+My personal website
 
 ## Setup
 
