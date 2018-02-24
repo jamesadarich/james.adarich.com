@@ -5,6 +5,7 @@
   "author": "James Adarich",
   "dependencies": {
     "express": "^4.16.2",
+    "express-sslify": "^1.2.0",
     "file-loader": "^1.1.8",
     "gatsby": "^1.9.199",
     "gatsby-cli": "^1.1.40",
