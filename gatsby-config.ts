@@ -1,16 +1,16 @@
 import * as path from "path";
 
-interface GatsbyConfig {
+interface IGatsbyConfig {
   siteMetadata: {
     siteUrl: string;
     title: string;
-  }
-  plugins: Array<string | { resolve: string, options?: object }>;
+  };
+  plugins: Array<string | { resolve: string; options?: object }>;
 }
 
 const SITE_NAME = "James Adarich";
 
-const GATSBY_CONFIG: GatsbyConfig = {
+const GATSBY_CONFIG: IGatsbyConfig = {
   siteMetadata: {
     siteUrl: `https://${process.env.SITE_DOMAIN}`,
     title: SITE_NAME
@@ -23,7 +23,7 @@ const GATSBY_CONFIG: GatsbyConfig = {
     "gatsby-transformer-sharp",
     "gatsby-plugin-sharp",
     "gatsby-plugin-offline",
-    
+
     {
       resolve: "gatsby-plugin-favicon",
       options: {
@@ -56,20 +56,20 @@ const GATSBY_CONFIG: GatsbyConfig = {
           {
             src: "/favicons/apple-touch-icon-72x72.png",
             sizes: "72x72",
-            type: "image/png",
+            type: "image/png"
           },
           {
             src: "/favicons/apple-touch-icon-114x144.png",
             sizes: "144x144",
-            type: "image/png",
+            type: "image/png"
           },
           {
             src: "/favicons/apple-touch-icon-180x180.png",
             sizes: "180x180",
-            type: "image/png",
-          },
-        ],
-      },
+            type: "image/png"
+          }
+        ]
+      }
     },
 
     // markdown plugins
@@ -92,19 +92,19 @@ const GATSBY_CONFIG: GatsbyConfig = {
               // It's important to specify the maxWidth (in pixels) of
               // the content container as this plugin uses this as the
               // base for generating different widths of each image.
-              maxWidth: 1000,
-            },
-          },
-        ],
-      },
+              maxWidth: 1000
+            }
+          }
+        ]
+      }
     },
 
     // SEO plugins
     {
       resolve: "gatsby-plugin-canonical-urls",
       options: {
-        siteUrl: `https://${process.env.SITE_DOMAIN}`,
-      },
+        siteUrl: `https://${process.env.SITE_DOMAIN}`
+      }
     },
     {
       resolve: "gatsby-plugin-sitemap",
@@ -136,16 +136,13 @@ const GATSBY_CONFIG: GatsbyConfig = {
 };
 
 if (process.env.GOOGLE_TAG_MANAGER_ID) {
-  GATSBY_CONFIG.plugins.push(
-    {
-      resolve: "gatsby-plugin-google-tagmanager",
-      options: {
-        id: process.env.GOOGLE_TAG_MANAGER_ID,
-        includeInDevelopment: false
-      }
+  GATSBY_CONFIG.plugins.push({
+    resolve: "gatsby-plugin-google-tagmanager",
+    options: {
+      id: process.env.GOOGLE_TAG_MANAGER_ID,
+      includeInDevelopment: false
     }
-  );
-
+  });
 }
 
 export = GATSBY_CONFIG;

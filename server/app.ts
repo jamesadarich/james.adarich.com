@@ -15,7 +15,7 @@ app.use((request, response: express.Response, next) => {
   next();
 });
 
-//Enforce https with Azure load balancer
+// Enforce https with Azure load balancer
 app.use(enforce.HTTPS({ trustAzureHeader: true }));
 
 // Serve up public/ftp folder
@@ -44,14 +44,11 @@ function setHeaders(response, filePath) {
 
   if (/css$/.test(mimeEncoding)) {
     response.setHeader("Cache-Control", "max-age=31536000");
-  }
-  else if (/javascript$/.test(mimeEncoding)) {
+  } else if (/javascript$/.test(mimeEncoding)) {
     response.setHeader("Cache-Control", "private, max-age=31536000");
-  }
-  else if (/^image/.test(mimeEncoding)) {
+  } else if (/^image/.test(mimeEncoding)) {
     response.setHeader("Cache-Control", "max-age=86400");
-  }
-  else {      
+  } else {
     response.setHeader("Cache-Control", "no-cache");
   }
 }
@@ -62,6 +59,4 @@ const sendStatusFile = (status, response) => {
   response.sendFile(path.resolve(`./public/${status}/index.html`));
 };
 
-export {
-    app
-}
+export { app };

@@ -4,9 +4,7 @@ import Header from "../components/Header";
 import "./index.scss";
 
 export default class SiteShell extends React.PureComponent {
-
   public render() {
-
     return (
       <div>
         <Header />
