@@ -33,7 +33,7 @@
   "license": "MIT",
   "scripts": {
     "patch:extract-text-plugin": "sed -i -e 's/if(c\\.initial) return;/if(!c||c.initial) return;/g' ./node_modules/extract-text-webpack-plugin/index.js",
-    "build": "npm run patch:extract-text-plugin && npm run build:server && npm run build:gatsby",
+    "build": "npm run build:server && npm run build:gatsby",
     "build:server": "tsc server/startup.ts --module commonjs --target esnext",
     "build:gatsby": "tsc gatsby-browser.ts gatsby-config.ts gatsby-node.ts gatsby-ssr.ts --module commonjs --target esnext && gatsby build",
     "develop": "npm run build && gatsby develop",

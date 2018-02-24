@@ -17,6 +17,7 @@ COPY tsconfig.json /james.adarich.com/
 RUN npm install
 
 # Build app
+RUN npm run patch:extract-text-plugin 
 RUN npm run build
 
 # Tidy up
