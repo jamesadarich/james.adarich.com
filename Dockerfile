@@ -27,10 +27,14 @@ RUN npm run build
 # Tidy up
 RUN rm -rf .cache
 RUN rm -rf src
+RUN rm -rf node_modules
 RUN rm -rf server/**/*.ts
 RUN rm -rf gatsby-*.*
 RUN rm -rf package-lock.json
 RUN rm -rf tsconfig.json
+
+# Install production dependencies
+RUN npm install --production
 
 # Fire up the app
 EXPOSE 8080
