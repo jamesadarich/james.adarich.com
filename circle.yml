@@ -4,13 +4,15 @@ machine:
 
 dependencies:
   override:
-    - docker info
-    - docker build . --tag jamesrichford/jamesadarich.com:latest --build-arg SITE_DOMAIN=james.adarich.com --rm=false
+    - npm install
+##    - docker info
+##    - docker build . --tag jamesrichford/jamesadarich.com:latest --build-arg SITE_DOMAIN=james.adarich.com --rm=false
 
 test:
   override:
-    - docker run -d -p 8080:8080 jamesrichford/jamesadarich.com:latest; sleep 10
-    - curl --retry 10 --retry-delay 5 -v http://localhost:8080
+    - npm test
+##    - docker run -d -p 8080:8080 jamesrichford/jamesadarich.com:latest; sleep 10
+##    - curl --retry 10 --retry-delay 5 -v http://localhost:8080
 
 deployment:
   hub:
