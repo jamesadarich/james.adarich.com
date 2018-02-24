@@ -32,16 +32,31 @@ header {
   }
 }
 
-.body-container {
+.page-container {
   max-width: 1000px;
   margin: 0 auto;
 }
 
-.page-container {
+.blog-post-container {
   background: white;
   box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.12), 0 8px 10px 1px rgba(0, 0, 0, 0.08), 0 3px 14px 2px rgba(0, 0, 0, 0.04);
   padding: 2rem;
   margin: 2rem;
+}
+
+.post-link {
+  margin: 2rem;
+  background: white;
+  padding: 2rem;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.12), 0 8px 10px 1px rgba(0, 0, 0, 0.08), 0 3px 14px 2px rgba(0, 0, 0, 0.04);
+  color: black;
+}
+
+.blog-timestamp {
+  color: grey;
+  font-size: 1rem;
+  display: block;
+  margin: 0.5rem 0;
 }
 
 html {
@@ -85,8 +100,9 @@ template {
   display: none;
 }
 a {
+  color: blue;
   background-color: transparent;
-  font-weight: 500;
+  font-weight: 700;
   text-decoration: none;
   -webkit-text-decoration-skip: objects;
 }

@@ -3,10 +3,13 @@ import Link from "gatsby-link";
 
 export default function PostLink({ post }: any) {
   return (
-    <div>
-      <Link to={post.frontmatter.path}>
-        {post.frontmatter.title} ({post.frontmatter.date})
-      </Link>
+    
+    <div className="post-link">    
+      <div>
+        <h2>{post.frontmatter.title}</h2>
+        <p>{post.frontmatter.description}</p>
+        <Link className="read-more-link" to={post.frontmatter.path}>read more</Link>
+      </div>
     </div>
   );
 }

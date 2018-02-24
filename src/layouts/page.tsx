@@ -24,7 +24,7 @@ export abstract class Page extends React.PureComponent<PageProps> {
 
     public render() {
         return (
-            <div>                
+            <div className="page-container">                
                 <Helmet
                     title={`James Adarich - ${this.props.title}`}
                     meta={[

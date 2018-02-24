@@ -10,11 +10,7 @@ export default class SiteShell extends React.PureComponent {
     return (
       <div>
         <Header />
-        <div className="body-container">
-          <div className="page-container">
-            {(this.props.children as any)()}
-          </div>
-        </div>
+        <div>{(this.props.children as any)()}</div>
       </div>
     );
   }

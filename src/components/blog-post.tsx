@@ -11,7 +11,8 @@ export default class BlogPage extends React.PureComponent<any> {
         <div className="blog-post-container">
           <div className="blog-post">
             <h1>{frontmatter.title}</h1>
-            <h2>{frontmatter.date}</h2>
+            <span className="blog-timestamp">({frontmatter.date})</span>
+            <hr />
             <div
               className="blog-post-content"
               dangerouslySetInnerHTML={{ __html: html }}
