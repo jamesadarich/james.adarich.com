@@ -16,8 +16,12 @@ COPY tsconfig.json /james.adarich.com/
 # Install app dependencies
 RUN npm install
 
-# Build app
+# Patch old dependency
+# Should be removed when upgrading to gatsby 2
+# https://github.com/jamesrichford/james.adarich.com/issues/6
 RUN npm run patch:extract-text-plugin 
+
+# Build app
 RUN npm run build
 
 # Tidy up
