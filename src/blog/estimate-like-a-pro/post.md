@@ -61,4 +61,4 @@ EXTRA LARGE (30+ days)
 Break stories down
 * to the nearest hour
 * ideally no bigger than a day (stuff can be committed and tied off within a day and clear progression)
-* include process tasks / link off to other piece on planning
+* include process tasks / link off to other [piece on planning](/blog/plan-in-pairs)
