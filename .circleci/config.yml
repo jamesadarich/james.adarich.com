@@ -40,7 +40,7 @@ workflows:
   continuous_integration:
     jobs:
       - static_analysis
-      - build_and_push_image
+      - build_and_push_image:
           filters:
             branches:
               only:
