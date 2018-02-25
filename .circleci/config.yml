@@ -22,7 +22,7 @@ workflows:
 #        - master
     jobs:
       - static_analysis
-#      - build:
+      - build
 #        filters:
 #          branches:
 #            only: master
