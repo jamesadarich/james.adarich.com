@@ -55,12 +55,12 @@ workflows:
 #            - static_analysis
 #          filters:
 #            branches:
-#]              ignore:
+#              ignore:
 #                - master
-      - tidy_up:
-          requires:
-            - qa_approval
-          filters:
-            branches:
-              ignore:
-                - master
+#      - tidy_up:
+#          requires:
+#            - qa_approval
+#          filters:
+#            branches:
+#              ignore:
+#                - master
