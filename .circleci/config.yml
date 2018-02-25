@@ -6,12 +6,13 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker
-      - run: echo "export DOCKER_IMAGE_TAG="$(echo "${CI_PULL_REQUEST##*/}") >> $BASH_ENV 
+      - run: echo 'export DOCKER_IMAGE_TAG=$(echo "${CI_PULL_REQUEST##*/}")' >> $BASH_ENV
+      - run: echo "DOCKER TAG ${DOCKER_IMAGE_TAG}"
       - run: docker info
-      - run: docker build . --tag jamesrichford/jamesadarich.com:${DOCKER_IMAGE_TAG:-latest} --build-arg SITE_DOMAIN=james.adarich.com --rm=false
+      # - run: docker build . --tag jamesrichford/jamesadarich.com:${DOCKER_IMAGE_TAG:-latest} --build-arg SITE_DOMAIN=james.adarich.com --rm=false
       # - run: docker run -d -p 8080:8080 jamesrichford/jamesadarich.com:${DOCKER_IMAGE_TAG}
-      - run: docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
-      - run: docker push jamesrichford/jamesadarich.com:${DOCKER_IMAGE_TAG:-latest}
+      # - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+      # - run: docker push jamesrichford/jamesadarich.com:${DOCKER_IMAGE_TAG:-latest}
   browser_tests:
     docker:
       - image: node:8
@@ -32,7 +33,7 @@ jobs:
     docker:
       - image: node:8
     steps:
-      - run: echo 'export DOCKER_IMAGE_TAG=$(echo "${CI_PULL_REQUEST##*/}")' >> $BASH_ENV 
+      - run: echo 'export DOCKER_IMAGE_TAG=$(echo "${CI_PULL_REQUEST##*/}")' >> $BASH_ENV
       - run: echo "DELETE DOCKER TAG ${DOCKER_IMAGE_TAG}"
 
 workflows:
@@ -40,12 +41,10 @@ workflows:
   continuous_integration:
     jobs:
       - static_analysis
-      - build_and_push_image:
-          filters:
-            branches:
-              only:
-                - master
+      - build_and_push_image
       - browser_tests
+          requires:
+            - build_and_push_image
       - qa_approval:
           type: approval
           requires:
