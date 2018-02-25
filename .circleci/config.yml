@@ -22,10 +22,10 @@ workflows:
 #        - master
     jobs:
       - static_analysis
-      - build:
-        filters:
-          branches:
-            only: master
+#      - build:
+#        filters:
+#          branches:
+#            only: master
 
 ## workflows:
 ##   version: 2
