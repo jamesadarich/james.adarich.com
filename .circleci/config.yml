@@ -33,12 +33,5 @@ workflows:
       - static_analysis
       - build_image
       - end_to_end_test:
-          requires:
-            - build_image
-      - push_image:
-          requires:
-            - static_analysis
-            - end_to_end_test
-          branches:
-            only:
-              - master
+        requires:
+          - build_image
