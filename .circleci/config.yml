@@ -40,10 +40,9 @@ workflows:
     jobs:
       - static_analysis
       - build_and_push_image
-      - push_image:
+      - test_image:
           requires:
-            - static_analysis
-            - end_to_end_test
+            - build_and_push_image
           filters:
             branches:
               only:
@@ -51,7 +50,8 @@ workflows:
       - qa_approval:
           type: approval
           requires:
-            - push_image
+            - test_image
+            - static_analysis
           filters:
             branches:
               ignore:
