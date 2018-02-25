@@ -42,7 +42,7 @@ workflows:
     jobs:
       - static_analysis
       - build_and_push_image
-      - browser_tests
+      - browser_tests:
           requires:
             - build_and_push_image
       - qa_approval:
