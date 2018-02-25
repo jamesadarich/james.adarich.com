@@ -6,4 +6,26 @@ description: "So you're wondering \"what's so good about being a developer anywa
 keywords: "developer, want to be, why, what is it like, how can i be, awesome, exciting"
 ---
 
-This is an example post
+![some awesome code](javascript.jpg)
+
+## So many options
+
+* UX/Design
+* Front End
+* Back End
+* Mobile
+* DevOps
+* QA Engineer
+* DBA
+
+## Master your own universe
+
+Fundamentally the smallest thing and you can change it!
+
+## Never stop discovering
+
+You'll constantly be learning
+
+## Change the world
+
+Unique platform for enabling change (everyone is created equal in the eyes of software)
