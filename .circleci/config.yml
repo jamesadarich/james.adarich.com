@@ -40,7 +40,7 @@ workflows:
     jobs:
       - static_analysis
       - build_and_push_image
-      - test_image:
+      - browser_tests:
           requires:
             - build_and_push_image
           filters:
@@ -50,7 +50,7 @@ workflows:
       - qa_approval:
           type: approval
           requires:
-            - test_image
+            - browser_tests
             - static_analysis
           filters:
             branches:
