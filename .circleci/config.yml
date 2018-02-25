@@ -18,6 +18,7 @@ jobs:
       - image: docker:stable-git
     steps:
       - checkout
+      - setup_remote_docker
       - run: docker info
       # yep, building the docker image again
       # it seems circle ci doesn't maintain the images previously built
