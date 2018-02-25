@@ -1,20 +1,29 @@
 version: 2
 jobs:
-  build_image:
-    machine: true
+  end_to_end_test:
+    docker:
+      - image: docker:stable-git
     steps:
       - checkout
+      - setup_remote_docker
       - run: docker info
       - run: docker build . --tag jamesrichford/jamesadarich.com:latest --build-arg SITE_DOMAIN=james.adarich.com --rm=false
-  end_to_end_test:
-    machine: true
-    steps:
-      - run: docker info
-      - run: docker run -d -p 8080:8080 jamesrichford/jamesadarich.com:latest; sleep 10
+      - run: docker run -d -p 8080:8080 jamesrichford/jamesadarich.com:latest
+      # simple check to make sure the server started
+      # could do with some lovely selenium tests at some point
       - run: curl --retry 10 --retry-delay 5 -v http://localhost:8080
   push_image:
-    machine: true
+    docker:
+      - image: docker:stable-git
     steps:
+      - checkout
+      - setup_remote_docker
+      - run: docker info
+      # yep, building the docker image again
+      # it seems circle ci doesn't maintain the images previously built
+      # and storing / restoring a tar is much slower
+      # can refactor into a build step at the point this is supported
+      - run: docker build . --tag jamesrichford/jamesadarich.com:latest --build-arg SITE_DOMAIN=james.adarich.com --rm=false
       - run: docker info
       - run: docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
       - run: docker push jamesrichford/jamesadarich.com:latest
@@ -31,7 +40,12 @@ workflows:
   continuous_integration:
     jobs:
       - static_analysis
-      - build_image
-      - end_to_end_test:
+      - end_to_end_test
+      - push_image:
           requires:
-            - build_image
+            - static_analysis
+            - end_to_end_test
+          filters:
+            branches:
+              only:
+                - master
