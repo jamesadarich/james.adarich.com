@@ -3,12 +3,10 @@ jobs:
   build_and_push_image:
     docker:
       - image: docker:stable-git
-    environment:
-      - DOCKER_IMAGE_TAG: "${CIRCLE_PR_NUMBER:-latest}"
     steps:
       - checkout
       - setup_remote_docker
-      - run: echo 'export DOCKER_IMAGE_TAG=$(echo "${CI_PULL_REQUEST##*/}")' >> $BASH_ENV 
+      - run: echo "export DOCKER_IMAGE_TAG="$(echo "${CI_PULL_REQUEST##*/}") >> $BASH_ENV 
       - run: docker info
       - run: docker build . --tag jamesrichford/jamesadarich.com:${DOCKER_IMAGE_TAG:-latest} --build-arg SITE_DOMAIN=james.adarich.com --rm=false
       # - run: docker run -d -p 8080:8080 jamesrichford/jamesadarich.com:${DOCKER_IMAGE_TAG}
