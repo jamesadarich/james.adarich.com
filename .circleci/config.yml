@@ -32,5 +32,4 @@ workflows:
     jobs:
       - static_analysis
       - build_image
-      - end_to_end_test:
-        requires: build_image
+      - end_to_end_test
