@@ -45,8 +45,7 @@ workflows:
             branches:
               only:
                 - master
-      - browser_tests:
-          requires:
+      - browser_tests
       - qa_approval:
           type: approval
           requires:
