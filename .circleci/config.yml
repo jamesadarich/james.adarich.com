@@ -23,9 +23,10 @@ workflows:
     jobs:
       - static_analysis
       - build
-#        filters:
-#          branches:
-#            only: master
+        filters:
+          branches:
+            only:
+              - master
 
 ## workflows:
 ##   version: 2
