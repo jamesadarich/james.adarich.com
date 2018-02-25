@@ -8,16 +8,16 @@ jobs:
       - setup_remote_docker
       - run: docker info
       - run: docker build . --tag jamesrichford/jamesadarich.com:latest --build-arg SITE_DOMAIN=james.adarich.com --rm=false
-      - run: docker run -d -p 8080:8080 jamesrichford/jamesadarich.com:latest;sleep 10
+      - run: docker run -d -p 8080:8080 jamesrichford/jamesadarich.com:latest
       # simple check to make sure the server started
       # could do with some lovely selenium tests at some point
+      - run: sudo apt-get install curl
       - run: curl --retry 10 --retry-delay 5 -v http://localhost:8080
   push_image:
     docker:
       - image: docker:stable-git
     steps:
       - checkout
-      - setup_remote_docker
       - run: docker info
       # yep, building the docker image again
       # it seems circle ci doesn't maintain the images previously built
