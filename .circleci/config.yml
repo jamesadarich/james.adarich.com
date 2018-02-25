@@ -15,12 +15,12 @@ jobs:
   browser_tests:
     docker:
       - image: node:8
-      - image: jamesrichford/jamesadarich.com:${CIRCLE_PR_NUMBER:-latest}
     steps:
       # simple check to make sure the server started
       # could do with some lovely selenium tests at some point
-      - run: apt-get install curl
-      - run: curl --retry 10 --retry-delay 5 -v http://localhost:8080
+      # - run: apt-get install curl
+      # - run: curl --retry 10 --retry-delay 5 -v http://localhost:8080
+      - run: echo "run some browser tests"
   static_analysis:
     docker:
       - image: node:8
@@ -41,13 +41,12 @@ workflows:
     jobs:
       - static_analysis
       - build_and_push_image
-      - browser_tests:
-          requires:
-            - build_and_push_image
           filters:
             branches:
               only:
                 - master
+      - browser_tests:
+          requires:
       - qa_approval:
           type: approval
           requires:
