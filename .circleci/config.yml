@@ -9,9 +9,9 @@ jobs:
 workflows:
   version: 2
   pull_request:
-    branches:
-      ignore:
-        - master
+#    branches:
+#      ignore:
+#        - master
     jobs:
       - static_analysis
 
