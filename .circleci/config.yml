@@ -11,7 +11,7 @@ jobs:
       - run: docker run -d -p 8080:8080 jamesrichford/jamesadarich.com:latest
       # simple check to make sure the server started
       # could do with some lovely selenium tests at some point
-      - run: sudo apt-get install curl
+      - run: apt-get install curl
       - run: curl --retry 10 --retry-delay 5 -v http://localhost:8080
   push_image:
     docker:
