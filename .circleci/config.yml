@@ -1,33 +1,26 @@
 version: 2
 jobs:
-  end_to_end_test:
-    docker:
-      - image: node:8
-    steps:
-      - checkout
-      - setup_remote_docker
-      - run: docker info
-      - run: docker build . --tag jamesrichford/jamesadarich.com:latest --build-arg SITE_DOMAIN=james.adarich.com --rm=false
-      - run: docker run -d -p 8080:8080 jamesrichford/jamesadarich.com:latest
-      # simple check to make sure the server started
-      # could do with some lovely selenium tests at some point
-      - run: apt-get install curl
-      - run: curl --retry 10 --retry-delay 5 -v http://localhost:8080
-  push_image:
+  build_and_push_image:
     docker:
       - image: docker:stable-git
     steps:
       - checkout
       - setup_remote_docker
+      - run: DOCKER_IMAGE_TAG=${CIRCLE_PR_NUMBER:-latest} 
       - run: docker info
-      # yep, building the docker image again
-      # it seems circle ci doesn't maintain the images previously built
-      # and storing / restoring a tar is much slower
-      # can refactor into a build step at the point this is supported
-      - run: docker build . --tag jamesrichford/jamesadarich.com:latest --build-arg SITE_DOMAIN=james.adarich.com --rm=false
-      - run: docker info
+      - run: docker build . --tag jamesrichford/jamesadarich.com:${DOCKER_IMAGE_TAG} --build-arg SITE_DOMAIN=james.adarich.com --rm=false
+      - run: docker run -d -p 8080:8080 jamesrichford/jamesadarich.com:${DOCKER_IMAGE_TAG}
       - run: docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASSWORD
-      - run: docker push jamesrichford/jamesadarich.com:latest
+      - run: docker push jamesrichford/jamesadarich.com:${DOCKER_IMAGE_TAG}
+  browser_tests:
+    docker:
+      - image: node:8
+      - image: jamesrichford/jamesadarich.com:${CIRCLE_PR_NUMBER:-latest}
+    steps:
+      # simple check to make sure the server started
+      # could do with some lovely selenium tests at some point
+      - run: apt-get install curl
+      - run: curl --retry 10 --retry-delay 5 -v http://localhost:8080
   static_analysis:
     docker:
       - image: node:8
@@ -35,13 +28,18 @@ jobs:
       - checkout
       - run: npm install
       - run: npm test
+  tidy_up:
+    docker:
+      - image: node:8
+    steps:
+      - run: echo "DELETE DOCKER TAG ${CIRCLE_PR_NUMBER}"
 
 workflows:
   version: 2
   continuous_integration:
     jobs:
       - static_analysis
-      - end_to_end_test
+      - build_and_push_image
       - push_image:
           requires:
             - static_analysis
@@ -49,4 +47,19 @@ workflows:
           filters:
             branches:
               only:
+                - master
+      - qa_approval:
+          type: approval
+          requires:
+            - push_image
+          filters:
+            branches:
+              ignore:
+                - master
+      - tidy_up:
+          requires:
+            - qa_approval
+          filters:
+            branches:
+              ignore:
                 - master
