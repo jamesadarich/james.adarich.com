@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Page } from "../layouts/page";
+require("prismjs/themes/prism.css");
 
 export default class BlogPage extends React.PureComponent<any> {
   public render() {
