@@ -2,16 +2,19 @@ FROM node:8
 
 MAINTAINER jamesrichford@googlemail.com
 
+# Set build arguments
+ARG SITE_DOMAIN
+
 # Create build directory
-RUN mkdir -p /james.adarich.com
-WORKDIR /james.adarich.com
+RUN mkdir -p /${SITE_DOMAIN}
+WORKDIR /${SITE_DOMAIN}
 
 # Get required files
-COPY gatsby-*.* /james.adarich.com/
-COPY server /james.adarich.com/server
-COPY src /james.adarich.com/src
-COPY package.json /james.adarich.com/
-COPY tsconfig.json /james.adarich.com/
+COPY gatsby-*.* /${SITE_DOMAIN}/
+COPY server /${SITE_DOMAIN}/server
+COPY src /${SITE_DOMAIN}/src
+COPY package.json /${SITE_DOMAIN}/
+COPY tsconfig.json /${SITE_DOMAIN}/
 
 # Install app dependencies
 RUN npm install

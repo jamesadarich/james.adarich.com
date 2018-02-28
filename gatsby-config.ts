@@ -9,10 +9,11 @@ interface IGatsbyConfig {
 }
 
 const SITE_NAME = "James Adarich";
+const SITE_URL = `https://${process.env.SITE_DOMAIN}`;
 
 const GATSBY_CONFIG: IGatsbyConfig = {
   siteMetadata: {
-    siteUrl: `https://${process.env.SITE_DOMAIN}`,
+    siteUrl: SITE_URL,
     title: SITE_NAME
   },
   plugins: [
@@ -103,7 +104,7 @@ const GATSBY_CONFIG: IGatsbyConfig = {
     {
       resolve: "gatsby-plugin-canonical-urls",
       options: {
-        siteUrl: `https://${process.env.SITE_DOMAIN}`
+        siteUrl: SITE_URL
       }
     },
     {
