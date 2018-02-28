@@ -5,8 +5,11 @@ export default class UnexpectedErrorPage extends React.PureComponent {
   public render() {
     return (
       <Page title="Unexpected Error" description="An unexpected error ocurred">
-        <h1>Unexpected Error</h1>
-        <p>Yikes, something really went wrong.</p>
+        <div className="page-content">
+          <h1>Unexpected Error</h1>
+          <hr />
+          <p>Yikes, something really went wrong.</p>
+        </div>
       </Page>
     );
   }
