@@ -5,7 +5,8 @@
   "author": "James Adarich",
   "dependencies": {
     "express": "^4.16.2",
-    "express-sslify": "^1.2.0"
+    "express-sslify": "^1.2.0",
+    "gatsby-remark-prismjs": "^1.2.15"
   },
   "license": "MIT",
   "scripts": {

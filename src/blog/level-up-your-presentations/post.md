@@ -4,6 +4,7 @@ date: "2017-11-07"
 title: "Level up your presentations"
 description: "Agile is"
 keywords: "process, presenting"
+draft: true
 ---
 
 ## Have a goal

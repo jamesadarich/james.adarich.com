@@ -1,0 +1,28 @@
+.gatsby-highlight {
+    margin-bottom: 1rem;
+
+    .token.operator {
+        background: none;
+    }
+
+    pre[class*="language-"] {
+        margin: 0;
+        padding: 0;
+    }
+    
+    code {
+        display: block;
+        padding: 1rem;
+        border-left: #ccc solid 0.25rem;
+    }
+}
+    
+.gatsby-highlight-code-line {
+    background-color: #feb;
+    display: block;
+    margin-right: -1rem;
+    margin-left: -1.25rem;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    border-left: 0.25rem solid #f99;
+}

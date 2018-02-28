@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Page } from "../layouts/page";
+import "prismjs/themes/prism.css";
 
 export default class BlogPage extends React.PureComponent<any> {
   public render() {
@@ -13,7 +14,7 @@ export default class BlogPage extends React.PureComponent<any> {
           .split(",")
           .map((keyword: string) => keyword.trim())}
       >
-        <div className="blog-post-container">
+        <div className="page-content">
           <div className="blog-post">
             <h1>{frontmatter.title}</h1>
             <span className="blog-timestamp">({frontmatter.date})</span>
