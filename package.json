@@ -22,7 +22,7 @@
     "lint:sass:fix": "sass-lint \"**/*.scss\" --ignore \"node_modules/**/*.*\" --fix ",
     "lint:typescript": "tslint \"**/*.ts\" \"**/*.tsx\" --exclude \"node_modules/**/*.*\"",
     "lint:typescript:fix": "tslint --fix \"**/*.ts\" \"**/*.tsx\" --exclude \"node_modules/**/*.*\"",
-    "prestart": "npm run build",
+    "prestart": "npm install && npm run build",
     "start": "node ./server/startup.js",
     "test": "npm run lint"
   },
