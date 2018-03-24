@@ -1,0 +1,29 @@
+version: '3'
+ 
+services:
+  proxy:
+    build:
+      context: ./infrastructure/nginx
+      args:
+        - SITE_DOMAIN=test.adarich.com
+#    volumes:
+#      - letsencrypt_certs:/etc/nginx/certs
+#      - letsencrypt_www:/var/www/letsencrypt
+    links:
+      # change to however we want to proxy it
+      - app:test.adarich.com
+    ports:
+      - "8000:80"
+      - "4430:443"
+    restart: always
+
+  app:
+    build:
+      context: .
+      args:
+        - SITE_DOMAIN=test.adarich.com
+    restart: always
+ 
+#volumes:
+#  letsencrypt_certs: ~
+#  letsencrypt_www: ~
