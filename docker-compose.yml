@@ -6,9 +6,11 @@ services:
       context: ./infrastructure/nginx
       args:
         - SITE_DOMAIN=test.adarich.com
-#    volumes:
-#      - letsencrypt_certs:/etc/nginx/certs
-#      - letsencrypt_www:/var/www/letsencrypt
+    depends_on:
+      - certbot
+    volumes:
+      - letsencrypt_certs:/etc/nginx/certs
+      - letsencrypt_www:/var/www/letsencrypt
     links:
       # change to however we want to proxy it
       - app:test.adarich.com
@@ -17,6 +19,16 @@ services:
       - "4430:443"
     restart: always
 
+  certbot:
+    build:
+      context: ./infrastructure/certbot
+      args:
+        - SITE_DOMAIN=test.adarich.com
+    command: /bin/true
+    volumes:
+      - letsencrypt_certs:/etc/letsencrypt
+      - letsencrypt_www:/var/www/letsencrypt
+
   app:
     build:
       context: .
@@ -24,6 +36,6 @@ services:
         - SITE_DOMAIN=test.adarich.com
     restart: always
  
-#volumes:
-#  letsencrypt_certs: ~
-#  letsencrypt_www: ~
+volumes:
+  letsencrypt_certs: ~
+  letsencrypt_www: ~

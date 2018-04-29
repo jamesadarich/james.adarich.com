@@ -40,5 +40,5 @@ RUN rm -rf tsconfig.json
 RUN npm install --production
 
 # Fire up the app
-EXPOSE 8080
+EXPOSE 80
 CMD [ "npm", "start" ]
