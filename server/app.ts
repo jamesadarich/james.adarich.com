@@ -16,7 +16,7 @@ app.use((request, response: express.Response, next) => {
 });
 
 // Enforce https with Azure load balancer
-app.use(enforce.HTTPS({ trustAzureHeader: true }));
+// app.use(enforce.HTTPS({ trustAzureHeader: true }));
 
 // Serve up public/ftp folder
 app.use(
