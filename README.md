@@ -20,3 +20,7 @@ Ensure you set your `GOOGLE_TAG_MANAGER_ID` environment variable, if you don't w
 ## Run in production mode
 
 `npm run build && npm start`
+
+## Deploying
+
+Deployment instructions can be found in the [guide](DEPLOYMENT.md)
