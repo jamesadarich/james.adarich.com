@@ -13,7 +13,7 @@ export default function Header() {
       </p>
       <nav>
         <Link to="/">Blog</Link>
-        <a href="https://github.com/jamesrichford">Github</a>
+        <a href="https://github.com/jamesadarich">Github</a>
       </nav>
     </header>
   );
