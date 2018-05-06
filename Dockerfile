@@ -1,20 +1,7 @@
-FROM node:8
-
-MAINTAINER jamesrichford@googlemail.com
-
-# Set build arguments
-ARG SITE_DOMAIN
-
-# Create build directory
-RUN mkdir -p /${SITE_DOMAIN}
-WORKDIR /${SITE_DOMAIN}
+FROM node:8 as build
 
 # Get required files
-COPY gatsby-*.* /${SITE_DOMAIN}/
-COPY server /${SITE_DOMAIN}/server
-COPY src /${SITE_DOMAIN}/src
-COPY package.json /${SITE_DOMAIN}/
-COPY tsconfig.json /${SITE_DOMAIN}/
+COPY . .
 
 # Install app dependencies
 RUN npm install
@@ -27,14 +14,20 @@ RUN npm run patch:extract-text-plugin
 # Build app
 RUN npm run build
 
-# Tidy up
-RUN rm -rf .cache
-RUN rm -rf src
-RUN rm -rf node_modules
+FROM node:8-alpine
+
+# Set build arguments
+ARG SITE_DOMAIN
+
+# Create build directory
+RUN mkdir -p /${SITE_DOMAIN}
+WORKDIR /${SITE_DOMAIN}
+
+# Get files for production
+COPY --from=build package.json .
+COPY --from=build public public
+COPY --from=build server server
 RUN rm -rf server/**/*.ts
-RUN rm -rf gatsby-*.*
-RUN rm -rf package-lock.json
-RUN rm -rf tsconfig.json
 
 # Install production dependencies
 RUN npm install --production
