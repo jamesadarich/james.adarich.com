@@ -1,0 +1,28 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: tls-ingress
+  annotations:
+    kubernetes.io/tls-acme: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  tls:
+  - hosts:
+    - james.adarich.com
+    - staging.james.adarich.com
+    secretName: tls-secret
+  rules:
+  - host: james.adarich.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: web-app-cluster-blue
+          servicePort: 80
+  - host: staging.james.adarich.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: web-app-cluster-green
+          servicePort: 80

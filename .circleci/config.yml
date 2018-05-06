@@ -33,7 +33,16 @@ jobs:
     steps:
       - run: echo 'export DOCKER_IMAGE_TAG=$(echo "${CI_PULL_REQUEST##*/}")' >> $BASH_ENV
       - run: echo "DELETE DOCKER TAG ${DOCKER_IMAGE_TAG}"
-
+  deploy:
+    docker:
+      - image: azure-cli
+    steps:
+      - run: production-service = kubectl get ingress tls-ingress -o=jsonpath={.spec.rules[?(@.host==\"james.adarich.com\")].http.paths[0].backend.serviceName}
+      - run: staging-service = kubectl get ingress tls-ingress -o=jsonpath={.spec.rules[?(@.host==\"staging.james.adarich.com\")].http.paths[0].backend.serviceName}
+      - run: staging-deployment = kubectl get service ${staging-service} -o=jsonpath={.spec.selector.app}
+      - run: echo "deploy to staging"
+      - run: echo "test staging"
+      - run: echo "confirm and swap"
 workflows:
   version: 2
   continuous_integration:

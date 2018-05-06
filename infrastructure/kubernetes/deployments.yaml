@@ -1,0 +1,43 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: web-app-blue
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: web-app-blue
+    spec:
+      containers:
+      - name: web-app
+        image: jamesadarich/james.adarich.com:latest
+        ports:
+        - containerPort: 80
+        env:
+        - name: REDIS
+          value: "web-app-blue"
+        - name: SITE_DOMAIN
+          value: "james.adarich.com"
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: web-app-green
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: web-app-green
+    spec:
+      containers:
+      - name: web-app
+        image: jamesadarich/james.adarich.com:latest
+        ports:
+        - containerPort: 80
+        env:
+        - name: REDIS
+          value: "web-app-green"
+        - name: SITE_DOMAIN
+          value: "james.adarich.com"
