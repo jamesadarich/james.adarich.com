@@ -35,14 +35,27 @@ jobs:
       - run: echo "DELETE DOCKER TAG ${DOCKER_IMAGE_TAG}"
   deploy:
     docker:
-      - image: azure-cli
+      - image: microsoft/azure-cli:2.0.31
     steps:
-      - run: production-service = kubectl get ingress tls-ingress -o=jsonpath={.spec.rules[?(@.host==\"james.adarich.com\")].http.paths[0].backend.serviceName}
-      - run: staging-service = kubectl get ingress tls-ingress -o=jsonpath={.spec.rules[?(@.host==\"staging.james.adarich.com\")].http.paths[0].backend.serviceName}
-      - run: staging-deployment = kubectl get service ${staging-service} -o=jsonpath={.spec.selector.app}
-      - run: echo "deploy to staging"
+      - run: az aks install-cli
+      - run: az login -u ${AZURE_SERVICE_PRINCIPAL_USERNAME} -p ${AZURE_SERVICE_PRINCIPAL_PASSWORD}
+      - run: az aks get-credentials --resource-group docker-adarich --name james.adarich.com
+      - run:
+        name: deploy to staging
+        command: |
+          staging-service=kubectl get ingress tls-ingress -o=jsonpath={.spec.rules[?(@.host==\"staging.james.adarich.com\")].http.paths[0].backend.serviceName}
+          staging-deployment=kubectl get service ${staging-service} -o=jsonpath={.spec.selector.app}
+          sed 's/{staging-deployment-name}/${staging-deployment}/g' <infrastructure\kubernetes\staging-deployment-template.yaml >infrastructure\kubernetes\staging-deployment.yaml
+          kubectl delete deployment ${staging-deployment}
+          kubectl create -f infrastructure\kubernetes\staging-deployment.yaml
       - run: echo "test staging"
-      - run: echo "confirm and swap"
+      - run:
+        name: swap slots
+        command: |
+          production-service=kubectl get ingress tls-ingress -o=jsonpath={.spec.rules[?(@.host==\"james.adarich.com\")].http.paths[0].backend.serviceName}
+          staging-service=kubectl get ingress tls-ingress -o=jsonpath={.spec.rules[?(@.host==\"staging.james.adarich.com\")].http.paths[0].backend.serviceName}
+          echo "build ingress yaml"
+          echo "apply new ingress yaml"
 workflows:
   version: 2
   continuous_integration:
