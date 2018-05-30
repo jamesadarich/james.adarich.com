@@ -39,7 +39,7 @@ jobs:
     steps:
       - run: az aks install-cli
       - run: az login -u ${AZURE_SERVICE_PRINCIPAL_USERNAME} -p ${AZURE_SERVICE_PRINCIPAL_PASSWORD}
-      - run: az aks get-credentials --resource-group docker-adarich --name james.adarich.com
+      - run: az aks get-credentials --resource-group docker-adarich --name james-adarich-site
       - run:
         name: deploy to staging
         command: |

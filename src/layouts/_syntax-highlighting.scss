@@ -15,6 +15,16 @@
         padding: 1rem;
         border-left: #ccc solid 0.25rem;
     }
+    
+    .language-cli {
+        background-color: #222;
+
+        code {
+            border: none;
+            background-color: #222;
+            color: #eee;
+        }
+    }
 }
     
 .gatsby-highlight-code-line {
