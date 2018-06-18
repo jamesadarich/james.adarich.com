@@ -17,12 +17,12 @@ spec:
       paths:
       - path: /
         backend:
-          serviceName: web-app-cluster-blue
+          serviceName: web-app-cluster-green
           servicePort: 80
   - host: staging.james.adarich.com
     http:
       paths:
       - path: /
         backend:
-          serviceName: web-app-cluster-green
+          serviceName: web-app-cluster-blue
           servicePort: 80

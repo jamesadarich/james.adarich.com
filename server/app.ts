@@ -41,7 +41,8 @@ function setHeaders(response, filePath) {
   if (/css$/.test(mimeEncoding)) {
     response.setHeader("Cache-Control", "max-age=31536000");
   } else if (/javascript$/.test(mimeEncoding)) {
-    response.setHeader("Cache-Control", "private, max-age=31536000");
+    //TODO: GATSBY V1 ISSUE - JS NOT BUSTABLE RESOLVE WHEN MOVING TO V2
+    response.setHeader("Cache-Control", "private, max-age=0, must-revalidate");
   } else if (/^image/.test(mimeEncoding)) {
     response.setHeader("Cache-Control", "max-age=86400");
   } else {

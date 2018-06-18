@@ -1,7 +1,14 @@
-FROM node:8 as build
+FROM node:10 as build
+
+# Set build arguments
+ARG SITE_DOMAIN
 
 # Get required files
 COPY . .
+
+# apparently phantom js needs to be installed first?
+# check again when upgrading to gatsby 2
+RUN npm install phantomjs-prebuilt --no-save
 
 # Install app dependencies
 RUN npm install
@@ -14,10 +21,7 @@ RUN npm run patch:extract-text-plugin
 # Build app
 RUN npm run build
 
-FROM node:8-alpine
-
-# Set build arguments
-ARG SITE_DOMAIN
+FROM node:10-alpine
 
 # Create build directory
 RUN mkdir -p /${SITE_DOMAIN}
