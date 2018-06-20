@@ -39,7 +39,10 @@ function setHeaders(response, filePath) {
   }
 
   if (/(css|javascript)$/.test(mimeEncoding)) {
-    response.setHeader("Cache-Control", "cache-control: public,max-age=31536000,immutable");
+    response.setHeader(
+      "Cache-Control",
+      "cache-control: public,max-age=31536000,immutable"
+    );
   } else if (/^image/.test(mimeEncoding)) {
     response.setHeader("Cache-Control", "max-age=86400");
   } else {

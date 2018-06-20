@@ -6,13 +6,12 @@ import { BlogPost } from "../graphql/blog-post";
 interface BlogListProps {
   data: {
     allMarkdownRemark: {
-      edges: Array<{ node: BlogPost }>
-    }
-  }
+      edges: Array<{ node: BlogPost }>;
+    };
+  };
 }
 
-const BlogList: React.SFC<BlogListProps> = props => {
-  
+export default (function BlogList(props) {
   const POSTS = props.data.allMarkdownRemark.edges
     .filter(edge => !edge.node.frontmatter.draft) // You can filter your posts based on some criteria
     .map(edge => <PostLink key={edge.node.id} post={edge.node} />);
@@ -22,9 +21,7 @@ const BlogList: React.SFC<BlogListProps> = props => {
       {POSTS}
     </Page>
   );
-}
-
-export default BlogList;
+}) as React.SFC<BlogListProps>;
 
 export const pageQuery = graphql`
   query IndexQuery {

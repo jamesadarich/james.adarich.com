@@ -7,6 +7,6 @@ export interface BlogPost {
     path: string;
     keywords: string;
     date: string;
-  },
+  };
   html: string;
 }

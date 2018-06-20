@@ -6,10 +6,10 @@ import { BlogPost } from "../graphql/blog-post";
 interface BlogPageProps {
   data: {
     markdownRemark: BlogPost;
-  }
+  };
 }
 
-const BlogPage: React.SFC<BlogPageProps> = props => {
+export default (function BlogPage(props) {
   const { markdownRemark } = props.data;
   const { frontmatter, html } = markdownRemark;
   return (
@@ -33,9 +33,7 @@ const BlogPage: React.SFC<BlogPageProps> = props => {
       </div>
     </Page>
   );
-};
-
-export default BlogPage;
+}) as React.SFC<BlogPageProps>;
 
 export const pageQuery = graphql`
   query BlogPostByPath($path: String!) {
