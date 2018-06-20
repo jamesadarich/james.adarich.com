@@ -1,5 +1,7 @@
 # Deployment Instructions
 
+docker build --build-arg SITE_DOMAIN=james.adarich.com . -t jamesadarich/james.adarich.com:<version>
+
 ## Create AKS instance
 
 Check the below

@@ -1,34 +1,41 @@
 import * as React from "react";
 import { Page } from "../layouts/page";
 import "prismjs/themes/prism.css";
+import { BlogPost } from "../graphql/blog-post";
 
-export default class BlogPage extends React.PureComponent<any> {
-  public render() {
-    const { markdownRemark } = this.props.data; // data.markdownRemark holds our post data
-    const { frontmatter, html } = markdownRemark;
-    return (
-      <Page
-        title={frontmatter.title}
-        description={frontmatter.description}
-        keywords={frontmatter.keywords
-          .split(",")
-          .map((keyword: string) => keyword.trim())}
-      >
-        <div className="page-content">
-          <div className="blog-post">
-            <h1>{frontmatter.title}</h1>
-            <span className="blog-timestamp">({frontmatter.date})</span>
-            <hr />
-            <div
-              className="blog-post-content"
-              dangerouslySetInnerHTML={{ __html: html }}
-            />
-          </div>
-        </div>
-      </Page>
-    );
+interface BlogPageProps {
+  data: {
+    markdownRemark: BlogPost;
   }
 }
+
+const BlogPage: React.SFC<BlogPageProps> = props => {
+  const { markdownRemark } = props.data;
+  const { frontmatter, html } = markdownRemark;
+  return (
+    <Page
+      title={frontmatter.title}
+      description={frontmatter.description}
+      keywords={frontmatter.keywords
+        .split(",")
+        .map((keyword: string) => keyword.trim())}
+    >
+      <div className="page-content">
+        <div className="blog-post">
+          <h1>{frontmatter.title}</h1>
+          <span className="blog-timestamp">({frontmatter.date})</span>
+          <hr />
+          <div
+            className="blog-post-content"
+            dangerouslySetInnerHTML={{ __html: html }}
+          />
+        </div>
+      </div>
+    </Page>
+  );
+};
+
+export default BlogPage;
 
 export const pageQuery = graphql`
   query BlogPostByPath($path: String!) {

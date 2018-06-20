@@ -1,5 +1,6 @@
 import * as React from "react";
 import Helmet from "react-helmet";
+import SiteShell from "./index";
 
 interface IPageProps {
   readonly title: string;
@@ -20,18 +21,20 @@ export abstract class Page extends React.PureComponent<IPageProps> {
 
   public render() {
     return (
-      <div className="page-container">
-        <Helmet
-          title={`James Adarich - ${this.props.title}`}
-          meta={[
-            { name: "description", content: this.props.description },
-            { name: "keywords", content: this.keywords.join(", ") }
-          ]}
-        >
-          <html lang="en" />
-        </Helmet>
-        {this.props.children}
-      </div>
+      <SiteShell>
+        <div className="page-container">
+          <Helmet
+            title={`James Adarich - ${this.props.title}`}
+            meta={[
+              { name: "description", content: this.props.description },
+              { name: "keywords", content: this.keywords.join(", ") }
+            ]}
+          >
+            <html lang="en" />
+          </Helmet>
+          {this.props.children}
+        </div>
+      </SiteShell>
     );
   }
 }

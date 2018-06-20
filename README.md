@@ -5,12 +5,10 @@ My personal website
 
 ### Environment Variables
 
-SITE_DOMAIN - website domain e.g. example.com or www.something-else.co.uk
-LETSENCRYPT_USERNAME - username (email) for letsencrypt certificate creation
+SITE_DOMAIN - website domain i.e. james.adarich.com
 
 --- optional ---
 
-HTTP_PORT - website challenge/redirect port (default 80)
 GOOGLE_TAG_MANAGER_ID - google tag manager id
 
 ### Google Tag Manger / Analytics
