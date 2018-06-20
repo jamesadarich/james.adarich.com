@@ -9,7 +9,7 @@ interface BlogPageProps {
   };
 }
 
-export default (function BlogPage(props) {
+export default (props: BlogPageProps) => {
   const { markdownRemark } = props.data;
   const { frontmatter, html } = markdownRemark;
   return (
@@ -33,7 +33,7 @@ export default (function BlogPage(props) {
       </div>
     </Page>
   );
-}) as React.SFC<BlogPageProps>;
+};
 
 export const pageQuery = graphql`
   query BlogPostByPath($path: String!) {

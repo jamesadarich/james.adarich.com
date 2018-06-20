@@ -1,6 +1,6 @@
 import * as path from "path";
 
-interface IGatsbyConfig {
+interface GatsbyConfig {
   siteMetadata: {
     siteUrl: string;
     title: string;
@@ -11,7 +11,7 @@ interface IGatsbyConfig {
 const SITE_NAME = "James Adarich";
 const SITE_URL = `https://${process.env.SITE_DOMAIN}`;
 
-const GATSBY_CONFIG: IGatsbyConfig = {
+const GATSBY_CONFIG: GatsbyConfig = {
   siteMetadata: {
     siteUrl: SITE_URL,
     title: SITE_NAME
