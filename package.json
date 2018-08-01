@@ -1,8 +1,4 @@
 {
-  "name": "james.adarich.com",
-  "description": "My personal website",
-  "version": "1.0.0",
-  "author": "James Adarich",
   "license": "MIT",
   "scripts": {
     "build": "npm run build:server && npm run build:gatsby",
@@ -34,7 +30,7 @@
     "gatsby-cli": "next",
     "gatsby-image": "next",
     "gatsby-plugin-canonical-urls": "next",
-    "gatsby-plugin-favicon": "^2.1.1",
+    "gatsby-plugin-favicon": "^3.1.0",
     "gatsby-plugin-google-tagmanager": "next",
     "gatsby-plugin-manifest": "next",
     "gatsby-plugin-offline": "next",

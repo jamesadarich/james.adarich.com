@@ -38,7 +38,7 @@ function setHeaders(response, filePath) {
     response.setHeader("Content-Encoding", "gzip");
   }
 
-  if (/(css|javascript)$/.test(mimeEncoding)) {
+  if (/(css|javascript|json)$/.test(mimeEncoding) || /(\/|\\)public(\/|\\)static(\/|\\)/.test(filePath)) {
     response.setHeader(
       "Cache-Control",
       "cache-control: public,max-age=31536000,immutable"
