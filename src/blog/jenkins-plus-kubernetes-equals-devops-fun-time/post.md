@@ -4,6 +4,7 @@ date: "2018-08-04"
 title: "Jenkins + Kubernetes = DevOps Fun Time"
 description: ""
 keywords: ""
+draft: true
 ---
 
 ## TL;DR
