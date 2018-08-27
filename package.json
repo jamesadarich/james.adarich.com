@@ -30,7 +30,6 @@
     "gatsby-cli": "next",
     "gatsby-image": "next",
     "gatsby-plugin-canonical-urls": "next",
-    "gatsby-plugin-favicon": "^3.1.0",
     "gatsby-plugin-google-tagmanager": "next",
     "gatsby-plugin-manifest": "next",
     "gatsby-plugin-offline": "next",

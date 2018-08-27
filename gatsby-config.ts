@@ -24,26 +24,6 @@ const GATSBY_CONFIG: GatsbyConfig = {
     "gatsby-transformer-sharp",
     "gatsby-plugin-sharp",
     "gatsby-plugin-offline",
-
-    {
-      resolve: "gatsby-plugin-favicon",
-      options: {
-        logo: "./src/images/favicon.png",
-        injectHTML: true,
-        icons: {
-          android: true,
-          appleIcon: true,
-          appleStartup: true,
-          coast: false,
-          favicons: true,
-          firefox: true,
-          twitter: false,
-          yandex: false,
-          windows: false
-        }
-      }
-    },
-
     {
       resolve: "gatsby-plugin-manifest",
       options: {
@@ -53,23 +33,7 @@ const GATSBY_CONFIG: GatsbyConfig = {
         background_color: "#eee",
         theme_color: "#eee",
         display: "minimal-ui",
-        icons: [
-          {
-            src: "/favicons/apple-touch-icon-72x72.png",
-            sizes: "72x72",
-            type: "image/png"
-          },
-          {
-            src: "/favicons/apple-touch-icon-114x144.png",
-            sizes: "144x144",
-            type: "image/png"
-          },
-          {
-            src: "/favicons/apple-touch-icon-180x180.png",
-            sizes: "180x180",
-            type: "image/png"
-          }
-        ]
+        icon: "src/images/favicon.png"
       }
     },
 
