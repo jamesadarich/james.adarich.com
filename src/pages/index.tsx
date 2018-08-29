@@ -2,6 +2,7 @@ import * as React from "react";
 import PostLink from "../components/post-link";
 import { Page } from "../layouts/page";
 import { BlogPost } from "../graphql/blog-post";
+import { graphql } from "gatsby";
 
 interface BlogListProps {
   data: {

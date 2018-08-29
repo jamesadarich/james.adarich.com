@@ -2,6 +2,7 @@ import * as React from "react";
 import { Page } from "../layouts/page";
 import "prismjs/themes/prism.css";
 import { BlogPost } from "../graphql/blog-post";
+import { graphql } from "gatsby";
 
 interface BlogPageProps {
   data: {
