@@ -12,8 +12,8 @@ import * as fs from "fs";
 import * as zlib from "zlib";
 import * as glob from "glob";
 
-exports.createPages = ({ boundActionCreators, graphql }: any) => {
-  const { createPage } = boundActionCreators;
+exports.createPages = ({ actions, graphql }: any) => {
+  const { createPage } = actions;
 
   const blogPostTemplate = path.resolve(`src/components/blog-post.tsx`);
 

@@ -3,8 +3,9 @@
   "scripts": {
     "build": "npm run build:server && npm run build:gatsby",
     "build:server": "tsc server/startup.ts --module commonjs --target esnext",
-    "build:gatsby": "tsc gatsby-browser.ts gatsby-config.ts gatsby-node.ts gatsby-ssr.ts --module commonjs --target esnext && gatsby build",
-    "develop": "npm run build && gatsby develop",
+    "build:gatsby": "npm run build:gatsby:config && gatsby build",
+    "build:gatsby:config": "tsc gatsby-browser.ts gatsby-config.ts gatsby-node.ts gatsby-ssr.ts --module commonjs --target esnext",
+    "develop": "npm run build:gatsby:config && gatsby develop",
     "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"src/**/*.js\"",
     "lint": "npm run lint:sass && npm run lint:typescript",
     "lint:fix": "npm run lint:sass:fix && npm run lint:typescript:fix",
