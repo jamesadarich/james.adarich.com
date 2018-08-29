@@ -49,7 +49,6 @@ const GATSBY_CONFIG: GatsbyConfig = {
       resolve: "gatsby-transformer-remark",
       options: {
         plugins: [
-          "gatsby-plugin-sharp",
           "gatsby-remark-copy-linked-files",
           {
             resolve: "gatsby-remark-prismjs",
