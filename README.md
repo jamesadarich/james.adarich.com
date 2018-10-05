@@ -6,7 +6,6 @@ My personal website
 ### Environment Variables
 
 SITE_DOMAIN - website domain e.g. example.com or www.something-else.co.uk
-LETSENCRYPT_USERNAME - username (email) for letsencrypt certificate creation
 
 --- optional ---
 
