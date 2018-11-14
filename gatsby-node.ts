@@ -8,9 +8,6 @@
 
 // blog stuff
 import * as path from "path";
-import * as fs from "fs";
-import * as zlib from "zlib";
-import * as glob from "glob";
 
 exports.createPages = ({ actions, graphql }: any) => {
   const { createPage } = actions;
@@ -44,15 +41,5 @@ exports.createPages = ({ actions, graphql }: any) => {
         context: {} // additional data can be passed via context
       });
     });
-  });
-};
-
-exports.onPostBuild = (pages: any) => {
-  const publicPath = path.join(__dirname, "public");
-  const gzippable = glob.sync(`${publicPath}/**/?(*.html|*.js|*.css)`);
-  gzippable.forEach((file: any) => {
-    const content = fs.readFileSync(file);
-    const zipped = zlib.gzipSync(content);
-    fs.writeFileSync(`${file}`, zipped);
   });
 };

@@ -9,7 +9,7 @@ interface GatsbyConfig {
 }
 
 const SITE_NAME = "James Adarich";
-const SITE_URL = `https://${process.env.SITE_DOMAIN}`;
+const SITE_URL = `https://${process.env.SITE_DOMAIN || "james.adarich.com"}`;
 
 const GATSBY_CONFIG: GatsbyConfig = {
   siteMetadata: {
@@ -110,10 +110,7 @@ const GATSBY_CONFIG: GatsbyConfig = {
           }
         }`
       }
-    },
-
-    // Headers
-    "gatsby-plugin-netlify-headers"
+    }
   ]
 };
 
