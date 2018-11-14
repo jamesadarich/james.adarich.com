@@ -3,14 +3,13 @@ My personal website
 
 ## Setup
 
+`npm install`
+
 ### Environment Variables
-
-
-SITE_DOMAIN - website domain i.e. james.adarich.com
-
 
 --- optional ---
 
+SITE_DOMAIN - website domain (default: james.adarich.com)
 GOOGLE_TAG_MANAGER_ID - google tag manager id
 
 ### Google Tag Manger / Analytics
@@ -19,7 +18,7 @@ Ensure you set your `GOOGLE_TAG_MANAGER_ID` environment variable, if you don't w
 
 ## Run in production mode
 
-`npm run build && npm start`
+`npm run build && npm run build:gzip && npm start`
 
 ## Deploying
 

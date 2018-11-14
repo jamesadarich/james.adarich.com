@@ -11,6 +11,7 @@ RUN npm install
 
 # Build app
 RUN npm run build
+RUN npm run build:gzip
 
 FROM node:10-alpine
 
