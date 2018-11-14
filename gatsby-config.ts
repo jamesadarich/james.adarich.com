@@ -110,7 +110,10 @@ const GATSBY_CONFIG: GatsbyConfig = {
           }
         }`
       }
-    }
+    },
+
+    // Headers
+    "gatsby-plugin-netlify-headers"
   ]
 };
 
