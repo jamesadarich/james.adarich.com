@@ -5,7 +5,9 @@ My personal website
 
 ### Environment Variables
 
+
 SITE_DOMAIN - website domain i.e. james.adarich.com
+
 
 --- optional ---
 
