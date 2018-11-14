@@ -71,7 +71,7 @@ const GATSBY_CONFIG: GatsbyConfig = {
               // base for generating different widths of each image.
               maxWidth: 1000,
               linkImagesToOriginal: false,
-              backgroundColor: 'transparent'
+              backgroundColor: "transparent"
             }
           }
         ]
