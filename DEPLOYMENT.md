@@ -1,5 +1,9 @@
 # Deployment Instructions
 
+This repository is compatible with netlify but can also be run via kubernetes.
+
+docker build --build-arg SITE_DOMAIN=james.adarich.com . -t jamesadarich/james.adarich.com:<version>
+
 ## Create AKS instance
 
 Check the below

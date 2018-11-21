@@ -1,6 +1,6 @@
 import * as path from "path";
 
-interface IGatsbyConfig {
+interface GatsbyConfig {
   siteMetadata: {
     siteUrl: string;
     title: string;
@@ -9,9 +9,9 @@ interface IGatsbyConfig {
 }
 
 const SITE_NAME = "James Adarich";
-const SITE_URL = `https://${process.env.SITE_DOMAIN}`;
+const SITE_URL = `https://${process.env.SITE_DOMAIN || "james.adarich.com"}`;
 
-const GATSBY_CONFIG: IGatsbyConfig = {
+const GATSBY_CONFIG: GatsbyConfig = {
   siteMetadata: {
     siteUrl: SITE_URL,
     title: SITE_NAME
@@ -24,26 +24,6 @@ const GATSBY_CONFIG: IGatsbyConfig = {
     "gatsby-transformer-sharp",
     "gatsby-plugin-sharp",
     "gatsby-plugin-offline",
-
-    {
-      resolve: "gatsby-plugin-favicon",
-      options: {
-        logo: "./src/images/favicon.png",
-        injectHTML: true,
-        icons: {
-          android: true,
-          appleIcon: true,
-          appleStartup: true,
-          coast: false,
-          favicons: true,
-          firefox: true,
-          twitter: false,
-          yandex: false,
-          windows: false
-        }
-      }
-    },
-
     {
       resolve: "gatsby-plugin-manifest",
       options: {
@@ -53,23 +33,7 @@ const GATSBY_CONFIG: IGatsbyConfig = {
         background_color: "#eee",
         theme_color: "#eee",
         display: "minimal-ui",
-        icons: [
-          {
-            src: "/favicons/apple-touch-icon-72x72.png",
-            sizes: "72x72",
-            type: "image/png"
-          },
-          {
-            src: "/favicons/apple-touch-icon-114x144.png",
-            sizes: "144x144",
-            type: "image/png"
-          },
-          {
-            src: "/favicons/apple-touch-icon-180x180.png",
-            sizes: "180x180",
-            type: "image/png"
-          }
-        ]
+        icon: "src/images/favicon.png"
       }
     },
 
@@ -85,7 +49,6 @@ const GATSBY_CONFIG: IGatsbyConfig = {
       resolve: "gatsby-transformer-remark",
       options: {
         plugins: [
-          "gatsby-plugin-sharp",
           "gatsby-remark-copy-linked-files",
           {
             resolve: "gatsby-remark-prismjs",
@@ -106,7 +69,8 @@ const GATSBY_CONFIG: IGatsbyConfig = {
               // It's important to specify the maxWidth (in pixels) of
               // the content container as this plugin uses this as the
               // base for generating different widths of each image.
-              maxWidth: 1000
+              maxWidth: 1000,
+              linkImagesToOriginal: false
             }
           }
         ]

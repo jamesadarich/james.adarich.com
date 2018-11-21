@@ -38,11 +38,11 @@ function setHeaders(response, filePath) {
     response.setHeader("Content-Encoding", "gzip");
   }
 
-  if (/css$/.test(mimeEncoding)) {
-    response.setHeader("Cache-Control", "max-age=31536000");
-  } else if (/javascript$/.test(mimeEncoding)) {
-    //TODO: GATSBY V1 ISSUE - JS NOT BUSTABLE RESOLVE WHEN MOVING TO V2
-    response.setHeader("Cache-Control", "private, max-age=0, must-revalidate");
+  if (
+    /(css|javascript|json)$/.test(mimeEncoding) ||
+    /(\/|\\)public(\/|\\)static(\/|\\)/.test(filePath)
+  ) {
+    response.setHeader("Cache-Control", "public,max-age=31536000,immutable");
   } else if (/^image/.test(mimeEncoding)) {
     response.setHeader("Cache-Control", "max-age=86400");
   } else {

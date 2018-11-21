@@ -6,20 +6,12 @@ ARG SITE_DOMAIN
 # Get required files
 COPY . .
 
-# apparently phantom js needs to be installed first?
-# check again when upgrading to gatsby 2
-RUN npm install phantomjs-prebuilt --no-save
-
 # Install app dependencies
 RUN npm install
 
-# Patch old dependency
-# Should be removed when upgrading to gatsby 2
-# https://github.com/jamesrichford/james.adarich.com/issues/6
-RUN npm run patch:extract-text-plugin 
-
 # Build app
 RUN npm run build
+RUN npm run build:gzip
 
 FROM node:10-alpine
 
