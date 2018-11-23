@@ -34,14 +34,12 @@ exports.createPages = ({ actions, graphql }: any) => {
       return Promise.reject(result.errors);
     }
 
-    result.data.allMarkdownRemark.edges
-      .filter((edge: any) => !edge.node.frontmatter.draft)
-      .forEach(({ node }: any) => {
-        createPage({
-          path: node.frontmatter.path,
-          component: blogPostTemplate,
-          context: {} // additional data can be passed via context
-        });
+    result.data.allMarkdownRemark.edges.forEach(({ node }: any) => {
+      createPage({
+        path: node.frontmatter.path,
+        component: blogPostTemplate,
+        context: {} // additional data can be passed via context
       });
+    });
   });
 };
