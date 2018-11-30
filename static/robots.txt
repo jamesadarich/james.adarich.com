@@ -1,3 +1,4 @@
+Sitemap: https://james.adarich.com/sitemap.xml
 User-agent: *
 Disallow: /404
 Disallow: /500
