@@ -18,7 +18,7 @@ export default (props: BlogListProps) => {
     .map(edge => <PostLink key={edge.node.id} post={edge.node} />);
 
   return (
-    <Page title="Blog" description="A list of musings and such">
+    <Page title="Software Engineer and Geek" description="A collection of musings, thoughts and down right outrageous ideas about software and all things nerdy!">
       {POSTS}
     </Page>
   );
