@@ -8,7 +8,9 @@ interface PostLinkProps {
 
 export default function PostLink({ post }: PostLinkProps) {
   // ensure no redirect for non JS users / crawlers
-  const postUrl = post.frontmatter.path.endsWith("/") ? post.frontmatter.path : `${post.frontmatter.path}/`;
+  const postUrl = post.frontmatter.path.endsWith("/")
+    ? post.frontmatter.path
+    : `${post.frontmatter.path}/`;
 
   return (
     <div className="post-link">

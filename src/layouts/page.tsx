@@ -10,9 +10,13 @@ interface PageProps {
 
 export abstract class Page extends React.PureComponent<PageProps> {
   private get keywords() {
-    return ["James", "Adarich", "developer", "software engineer", "blog"].concat(
-      this.props.keywords
-    );
+    return [
+      "James",
+      "Adarich",
+      "developer",
+      "software engineer",
+      "blog"
+    ].concat(this.props.keywords);
   }
 
   public constructor(props: any) {

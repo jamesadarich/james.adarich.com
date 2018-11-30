@@ -17,8 +17,13 @@ export default (props: BlogListProps) => {
     .filter(edge => !edge.node.frontmatter.draft) // You can filter your posts based on some criteria
     .map(edge => <PostLink key={edge.node.id} post={edge.node} />);
 
+  const DESCRIPTION =
+    "A collection of musings, " +
+    "thoughts and down right outrageous ideas " +
+    "about software and all things nerdy!";
+
   return (
-    <Page title="Software Engineer and Geek" description="A collection of musings, thoughts and down right outrageous ideas about software and all things nerdy!">
+    <Page title="Software Engineer and Geek" description={DESCRIPTION}>
       {POSTS}
     </Page>
   );
