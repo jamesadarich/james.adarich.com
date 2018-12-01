@@ -6,7 +6,7 @@ export default function Header() {
     <header>
       <h1>James Adarich</h1>
       <p>
-        Senior Developer @{" "}
+        Principal Developer @{" "}
         <a className="neworbit-link" href="https://neworbit.co.uk">
           NewOrbit
         </a>
