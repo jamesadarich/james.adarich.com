@@ -31,8 +31,7 @@ export abstract class Page extends React.PureComponent<PageProps> {
             title={`James Adarich - ${this.props.title}`}
             meta={[
               { name: "description", content: this.props.description },
-              { name: "keywords", content: this.keywords.join(", ") },
-              { name: "google-site-verification", content: "bJBNl5V0jiXwQhRhx9_w-dWSaN-H3QIQxfAZVx2-gUU" }
+              { name: "keywords", content: this.keywords.join(", ") }
             ]}
           >
             <html lang="en" />
