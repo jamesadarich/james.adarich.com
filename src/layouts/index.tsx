@@ -8,6 +8,7 @@ export default class SiteShell extends React.PureComponent {
       <div>
         <Header />
         <div>{this.props.children}</div>
+        <footer>© James Adarich</footer>
       </div>
     );
   }

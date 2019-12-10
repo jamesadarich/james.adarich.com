@@ -1,6 +1,14 @@
 @import "./_gatsby";
 @import "./_syntax-highlighting";
 
+footer {
+  background: #333;
+  color: white;
+  text-align: center;
+  font-family: sans-serif;
+  padding: 2rem;
+}
+
 header {
   text-align: center;
   padding: 1rem;
