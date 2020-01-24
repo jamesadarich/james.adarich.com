@@ -1,11 +1,17 @@
 import * as React from "react";
 import Helmet from "react-helmet";
 import SiteShell from "./index";
+import { graphql } from "gatsby";
 
 interface PageProps {
   readonly title: string;
   readonly description: string;
   readonly keywords?: Array<string>;
+  readonly site: {
+    siteMetadata: {
+      siteUrl: string;
+    }
+  }
 }
 
 export abstract class Page extends React.PureComponent<PageProps> {
@@ -31,7 +37,11 @@ export abstract class Page extends React.PureComponent<PageProps> {
             title={`James Adarich - ${this.props.title}`}
             meta={[
               { name: "description", content: this.props.description },
-              { name: "keywords", content: this.keywords.join(", ") }
+              { name: "keywords", content: this.keywords.join(", ") },
+              { name: "image", content: `${this.props.site.siteMetadata.siteUrl}/icons/icon-512x512.png` },
+              { property: "og:title", content: this.props.title },
+              { property: "og:description", content: this.props.description },
+              { property: "og:image", content: `${this.props.site.siteMetadata.siteUrl}/icons/icon-512x512.png` }
             ]}
           >
             <html lang="en" />
@@ -42,3 +52,13 @@ export abstract class Page extends React.PureComponent<PageProps> {
     );
   }
 }
+
+export const pageQuery = graphql`
+  query PageQuery {
+    site: {
+      siteMetadata: {
+        siteUrl
+      }
+    }
+  }
+`;
