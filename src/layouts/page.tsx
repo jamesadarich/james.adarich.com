@@ -30,16 +30,29 @@ export abstract class Page extends React.PureComponent<PageProps> {
         <div className="page-container">
           <StaticQuery
             query={seoQuery}
-            render={({ site: { siteMetadata: { siteUrl }}}) => (
+            render={({
+              site: {
+                siteMetadata: { siteUrl }
+              }
+            }) => (
               <Helmet
                 title={`James Adarich - ${this.props.title}`}
                 meta={[
                   { name: "description", content: this.props.description },
                   { name: "keywords", content: this.keywords.join(", ") },
-                  { name: "image", content: `${siteUrl}/icons/icon-512x512.png` },
+                  {
+                    name: "image",
+                    content: `${siteUrl}/icons/icon-512x512.png`
+                  },
                   { property: "og:title", content: this.props.title },
-                  { property: "og:description", content: this.props.description },
-                  { property: "og:image", content: `${siteUrl}/icons/icon-512x512.png` }
+                  {
+                    property: "og:description",
+                    content: this.props.description
+                  },
+                  {
+                    property: "og:image",
+                    content: `${siteUrl}/icons/icon-512x512.png`
+                  }
                 ]}
               >
                 <html lang="en" />
@@ -53,10 +66,12 @@ export abstract class Page extends React.PureComponent<PageProps> {
   }
 }
 
-const seoQuery = graphql`query SEO {
-  site {
-    siteMetadata {
-      siteUrl
+const seoQuery = graphql`
+  query SEO {
+    site {
+      siteMetadata {
+        siteUrl
+      }
     }
   }
-}`;
+`;
