@@ -53,12 +53,10 @@ export abstract class Page extends React.PureComponent<PageProps> {
   }
 }
 
-export const pageQuery = graphql`
-  query PageQuery {
-    site: {
-      siteMetadata: {
-        siteUrl
-      }
+export const pageQuery = graphql`{
+  site {
+    siteMetadata {
+      siteUrl
     }
   }
-`;
+}`;
