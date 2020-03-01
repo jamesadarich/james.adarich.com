@@ -2,6 +2,7 @@
   "compilerOptions": {
     "outDir": "./build/",
     "sourceMap": true,
+    "allowSyntheticDefaultImports": true,
     "noImplicitAny": true,
     "module": "commonjs",
     "target": "esnext",
