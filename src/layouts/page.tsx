@@ -7,6 +7,8 @@ interface PageProps {
   readonly title: string;
   readonly description: string;
   readonly keywords?: Array<string>;
+  //TODO: replace with useLocation
+  location: { pathname: string };
 }
 
 export abstract class Page extends React.PureComponent<PageProps> {
@@ -46,7 +48,7 @@ export abstract class Page extends React.PureComponent<PageProps> {
                   },
                   { property: "og:type", content: "website" },
                   { property: "og:title", content: this.props.title },
-                  { property: "og:url", content: `${siteUrl}${location.pathname}` },
+                  { property: "og:url", content: `${siteUrl}${this.props.location.pathname}` },
                   {
                     property: "og:description",
                     content: this.props.description

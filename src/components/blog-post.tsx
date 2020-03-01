@@ -9,6 +9,8 @@ interface BlogPageProps {
   data: {
     markdownRemark: BlogPost;
   };
+  //TODO: replace with useLocation
+  location: { pathname: string };
 }
 
 export default (props: BlogPageProps) => {
@@ -16,6 +18,7 @@ export default (props: BlogPageProps) => {
   const { frontmatter, html } = markdownRemark;
   return (
     <Page
+      location={props.location}
       title={frontmatter.title}
       description={frontmatter.description}
       keywords={frontmatter.keywords
