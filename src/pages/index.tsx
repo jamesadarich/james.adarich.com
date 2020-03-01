@@ -23,7 +23,7 @@ export default function BlogList(props: BlogListProps) {
     "about software and all things nerdy!";
 
   return (
-    <Page title="Software Engineer and Geek" description={DESCRIPTION}>
+    <Page title="Blog" description={DESCRIPTION}>
       {POSTS}
     </Page>
   );

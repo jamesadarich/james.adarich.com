@@ -41,6 +41,7 @@ export function Page (props: PageProps) {
                   content: `${siteUrl}/icons/icon-512x512.png`
                 },
                 { property: "og:type", content: "website" },
+                { property: "og:site_name", content: "James Adarich" },
                 { property: "og:title", content: `James Adarich - ${props.title}` },
                 { property: "og:url", content: `${siteUrl}${location.pathname}` },
                 {
@@ -50,7 +51,12 @@ export function Page (props: PageProps) {
                 {
                   property: "og:image",
                   content: `${siteUrl}/icons/icon-512x512.png`
-                }
+                },
+
+                { property: "twitter:card", content: "summary" },
+                { property: "twitter:title", content: props.title },
+                { property: "twitter:image", content: `${siteUrl}/icons/icon-512x512.png` },
+                { property: "twitter:description", content: props.description },
               ]}
             >
               <html lang="en" />

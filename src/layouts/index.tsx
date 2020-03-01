@@ -10,7 +10,7 @@ export function SiteShell(props: React.Props<void>) {
       <div>{props.children}</div>
       <footer>
         <div className="footer-link">
-          <a className="github-link" href="https://github.com/jamesadarich">
+          <a title="James Adarich on GitHub" className="github-link" href="https://github.com/jamesadarich">
             <GithubIcon />
             jamesadarich
           </a>

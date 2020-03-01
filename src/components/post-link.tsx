@@ -17,7 +17,7 @@ export function PostLink({ post }: PostLinkProps) {
       <div>
         <h2>{post.frontmatter.title}</h2>
         <p>{post.frontmatter.description}</p>
-        <Link className="read-more-link" to={postUrl}>
+        <Link title={`Read ${post.frontmatter.title}`} className="read-more-link" to={postUrl}>
           read more
         </Link>
       </div>
