@@ -1,24 +1,22 @@
 import * as React from "react";
-import Header from "../components/Header";
+import { Header } from "../components/header";
 import "./index.scss";
-import githubIcon from "../images/github.svg";
+import GithubIcon from "../images/github-icon.svg";
 
-export default class SiteShell extends React.PureComponent {
-  public render() {
-    return (
-      <div>
-        <Header />
-        <div>{this.props.children}</div>
-        <footer>
-          <div>
-            <a href="https://github.com/jamesadarich">
-              <img src={githubIcon} />
-              jamesadarich
-            </a>
-          </div>
-          <div>© James Adarich</div>
-        </footer>
-      </div>
-    );
-  }
+export function SiteShell(props: React.Props<void>) {
+  return (
+    <div>
+      <Header />
+      <div>{props.children}</div>
+      <footer>
+        <div className="footer-link">
+          <a className="github-link" href="https://github.com/jamesadarich">
+            <GithubIcon />
+            jamesadarich
+          </a>
+        </div>          
+        <div className="footer-link">© James Adarich</div>
+      </footer>
+    </div>
+  );
 }

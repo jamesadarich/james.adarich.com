@@ -1,6 +1,6 @@
 import * as React from "react";
 import Helmet from "react-helmet";
-import SiteShell from "./index";
+import { SiteShell } from "./index";
 import { graphql, StaticQuery } from "gatsby";
 import { useLocation } from "@reach/router";
 
@@ -41,7 +41,7 @@ export function Page (props: PageProps) {
                   content: `${siteUrl}/icons/icon-512x512.png`
                 },
                 { property: "og:type", content: "website" },
-                { property: "og:title", content: props.title },
+                { property: "og:title", content: `James Adarich - ${props.title}` },
                 { property: "og:url", content: `${siteUrl}${location.pathname}` },
                 {
                   property: "og:description",

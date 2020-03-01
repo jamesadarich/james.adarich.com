@@ -1,17 +1,17 @@
 import * as React from "react";
 import { Page } from "../layouts/page";
 import "prismjs/themes/prism.css";
-import { BlogPost } from "../graphql/blog-post";
+import { BlogPostQueryModel } from "../graphql/blog-post";
 import { graphql } from "gatsby";
 import Helmet from "react-helmet";
 
 interface BlogPageProps {
   data: {
-    markdownRemark: BlogPost;
+    markdownRemark: BlogPostQueryModel;
   };
 }
 
-export default (props: BlogPageProps) => {
+export default function BlogPost(props: BlogPageProps) {
   const { markdownRemark } = props.data;
   const { frontmatter, html } = markdownRemark;
   return (
@@ -22,11 +22,14 @@ export default (props: BlogPageProps) => {
         .split(",")
         .map((keyword: string) => keyword.trim())}
     >
-      <Helmet meta={[
-        { name: "og:type", content: "article" },
-        { name: "og:article:published_time", content: frontmatter.date },
-        { name: "og:arcticle:author", content: "James Adarich" },
-        { name: "og:arcticle:tags", content: frontmatter.keywords }
+      <Helmet 
+        title={frontmatter.title}
+        meta={[
+        { property: "og:type", content: "article" },
+        { property: "og:title", content: frontmatter.title },
+        { property: "og:article:published_time", content: frontmatter.date },
+        { property: "og:arcticle:author", content: "James Adarich" },
+        { property: "og:arcticle:tags", content: frontmatter.keywords }
       ]} />
       <div className="page-content">
         <div className="blog-post">

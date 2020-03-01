@@ -1,4 +1,4 @@
-export interface BlogPost {
+export interface BlogPostQueryModel {
   id: number;
   frontmatter: {
     draft: boolean;

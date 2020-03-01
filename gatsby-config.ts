@@ -36,6 +36,14 @@ const GATSBY_CONFIG: GatsbyConfig = {
         icon: "src/images/favicon.png"
       }
     },
+    {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        rule: {
+          include: /.*\.svg/ // See below to configure properly
+        }
+      }
+    },
 
     // markdown plugins
     {
