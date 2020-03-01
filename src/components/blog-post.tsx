@@ -3,6 +3,7 @@ import { Page } from "../layouts/page";
 import "prismjs/themes/prism.css";
 import { BlogPost } from "../graphql/blog-post";
 import { graphql } from "gatsby";
+import Helmet from "react-helmet";
 
 interface BlogPageProps {
   data: {
@@ -21,6 +22,12 @@ export default (props: BlogPageProps) => {
         .split(",")
         .map((keyword: string) => keyword.trim())}
     >
+      <Helmet meta={[
+        { name: "og:type", content: "article" },
+        { name: "og:article:published_time", content: frontmatter.date }
+        { name: "og:arcticle:author", content: "James Adarich" }
+        { name: "og:arcticle:tags", content: frontmatter.keywords }
+      ]} />
       <div className="page-content">
         <div className="blog-post">
           <h1>{frontmatter.title}</h1>

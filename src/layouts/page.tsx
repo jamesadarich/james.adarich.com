@@ -44,7 +44,9 @@ export abstract class Page extends React.PureComponent<PageProps> {
                     name: "image",
                     content: `${siteUrl}/icons/icon-512x512.png`
                   },
+                  { property: "og:type", content: "website" },
                   { property: "og:title", content: this.props.title },
+                  { property: "og:url", content: `${siteUrl}${location.pathname}` },
                   {
                     property: "og:description",
                     content: this.props.description
