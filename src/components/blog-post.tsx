@@ -24,8 +24,8 @@ export default (props: BlogPageProps) => {
     >
       <Helmet meta={[
         { name: "og:type", content: "article" },
-        { name: "og:article:published_time", content: frontmatter.date }
-        { name: "og:arcticle:author", content: "James Adarich" }
+        { name: "og:article:published_time", content: frontmatter.date },
+        { name: "og:arcticle:author", content: "James Adarich" },
         { name: "og:arcticle:tags", content: frontmatter.keywords }
       ]} />
       <div className="page-content">
