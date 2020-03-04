@@ -1,4 +1,4 @@
-# james.adarich.com
+# [james.adarich.com](https://james.adarich.com/)
 My personal website
 
 ## Setup
