@@ -30,6 +30,7 @@ Beyond this there are even more options but I think the point has been made.
 Most **Markdown** libs have a "sanitize" functionality but they acknowledge that these don't work properly / are deprecated
 
 [marked sanitize warning](https://github.com/markedjs/marked/blob/0c561f34590d392eaa9bf219aec1d34aab985c92/README.md#warning--marked-does-not-sanitize-the-output-html-please-use-a-sanitize-library-like-dompurify-recommended-sanitize-html-or-insane-on-the-output-html-)
+
 [showdown acknowledgement](https://github.com/showdownjs/showdown#xss-vulnerability)
 
 ## OK, how do I secure my Markdown then?
