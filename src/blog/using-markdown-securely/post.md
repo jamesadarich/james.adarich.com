@@ -146,4 +146,8 @@ For sure;
 3. Ensure you sanitize the stored **HTML** before you display it
 4. Remember to convert the **HTML** back to **Markdown** before editing
 
+## So now I'm using sanitizers I can relax!
+
+Not quite, sanitizers are far from perfect and it could be that a sanitizer misses an attack vector. Always ensure your dependencies are up to date in order to minimize your exposure to this risk.
+
 As a side note this highlights the importance of implementing a strong [Content Security Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP) as if we miss a potential **XSS** attack we can fall back to this to help protect our application and users.
