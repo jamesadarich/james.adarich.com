@@ -1,0 +1,35 @@
+name: oidc-check
+on:
+  pull_request:
+  push:
+    branches: [oidc-check]
+permissions:
+  contents: read
+  id-token: write
+jobs:
+  with-environment:
+    runs-on: ubuntu-latest
+    environment: preview
+    steps:
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::${{ vars.AWS_STAGING_ACCOUNT_ID }}:role/github/homestead-hunter-preview
+          aws-region: eu-west-2
+      - run: aws sts get-caller-identity
+  without-environment:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::${{ vars.AWS_STAGING_ACCOUNT_ID }}:role/github/homestead-hunter-preview
+          aws-region: eu-west-2
+      - run: aws sts get-caller-identity
+  pull-request-to-deploy-role:
+    runs-on: ubuntu-latest
+    environment: staging
+    steps:
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::${{ vars.AWS_STAGING_ACCOUNT_ID }}:role/github/homestead-hunter-staging-deploy
+          aws-region: eu-west-2
+      - run: aws sts get-caller-identity
